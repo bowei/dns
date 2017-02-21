@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Fed contains federation specific DNS code.
+// Package fed contains federation specific DNS code.
 package fed
 
 import (

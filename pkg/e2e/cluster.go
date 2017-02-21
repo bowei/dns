@@ -52,10 +52,10 @@ func (cl *Cluster) SetUp() {
 	cl.pullImages()
 
 	cl.StartEtcd()
-	cl.StartApiServer()
+	cl.StartAPIServer()
 	cl.StartKubelet()
 
-	cl.WaitForApiServer()
+	cl.WaitForAPIServer()
 }
 
 // TearDown the e2e cluster.
@@ -63,7 +63,7 @@ func (cl *Cluster) TearDown() {
 	Log.Logf("Teardown")
 
 	cl.StopKubelet()
-	cl.StopApiServer()
+	cl.StopAPIServer()
 	cl.StopEtcd()
 }
 
@@ -121,7 +121,7 @@ func (cl *Cluster) StopEtcd() {
 	cl.containers.etcd = ""
 }
 
-func (cl *Cluster) StartApiServer() {
+func (cl *Cluster) StartAPIServer() {
 	Log.Logf("Starting API server")
 
 	cl.containers.api = cl.Docker.Run(
@@ -138,7 +138,7 @@ func (cl *Cluster) StartApiServer() {
 		"--v=2")
 }
 
-func (cl *Cluster) StopApiServer() {
+func (cl *Cluster) StopAPIServer() {
 	if cl.containers.api == "" {
 		return
 	}
@@ -148,7 +148,7 @@ func (cl *Cluster) StopApiServer() {
 	cl.containers.api = ""
 }
 
-func (cl *Cluster) WaitForApiServer() {
+func (cl *Cluster) WaitForAPIServer() {
 	deadline := time.Now().Add(startupTimeout)
 
 	for time.Now().Before(deadline) {

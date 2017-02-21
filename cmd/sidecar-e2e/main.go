@@ -114,7 +114,7 @@ func waitForPredicate(predicate func() (bool, error), duration time.Duration, in
 	return fmt.Errorf("timeout (last error was %v)", err)
 }
 
-func waitForTcpOrExit(cmd *exec.Cmd, endpoint string) error {
+func waitForTCPOrExit(cmd *exec.Cmd, endpoint string) error {
 	exitChan := make(chan error)
 	go func() {
 		_, err := cmd.Process.Wait()
@@ -361,7 +361,7 @@ func (t *test) runDnsmasq() {
 		log.Fatal(err)
 	}
 
-	if err := waitForTcpOrExit(t.dnsmasq, fmt.Sprintf("127.0.0.1:%v", dnsmasqPort)); err != nil {
+	if err := waitForTCPOrExit(t.dnsmasq, fmt.Sprintf("127.0.0.1:%v", dnsmasqPort)); err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("dnsmasq started")
@@ -385,7 +385,7 @@ func (t *test) runSidecar() {
 		log.Fatal(err)
 	}
 
-	if err := waitForTcpOrExit(t.sidecar, fmt.Sprintf("127.0.0.1:%v", sidecarPort)); err != nil {
+	if err := waitForTCPOrExit(t.sidecar, fmt.Sprintf("127.0.0.1:%v", sidecarPort)); err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("sidecar started")

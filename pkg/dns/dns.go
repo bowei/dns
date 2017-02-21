@@ -251,12 +251,12 @@ func (kd *KubeDNS) setEndpointsStore() {
 }
 
 func assertIsService(obj interface{}) (*v1.Service, bool) {
+	var service v1.Service
 	if service, ok := obj.(*v1.Service); ok {
-		return service, ok
-	} else {
-		glog.Errorf("Type assertion failed! Expected 'Service', got %T", service)
-		return nil, ok
+		return service, true
 	}
+	glog.Errorf("Type assertion failed! Expected 'Service', got %T", service)
+	return nil, false
 }
 
 func (kd *KubeDNS) newService(obj interface{}) {

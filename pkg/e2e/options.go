@@ -31,7 +31,7 @@ type Options struct {
 
 	EtcdImage      string
 	HyperkubeImage string
-	ClusterIpRange string
+	ClusterIPRange string
 }
 
 // DefaultOptions to use to run the e2e test.
@@ -46,7 +46,7 @@ func DefaultOptions(baseDir string, workDir string) Options {
 		Docker:         "docker",
 		EtcdImage:      etcdImage,
 		HyperkubeImage: hyperkubeImage,
-		ClusterIpRange: "10.0.0.0/24",
+		ClusterIPRange: "10.0.0.0/24",
 	}
 
 	return ret

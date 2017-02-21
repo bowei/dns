@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Package DNS provides a backend for the skydns DNS server started by the
+// Package dns provides a backend for the skydns DNS server started by the
 // kubedns cluster addon. It exposes the 2 interface method: Records and
 // ReverseRecord, which skydns invokes according to the DNS queries it
 // receives. It serves these records by consulting an in memory tree

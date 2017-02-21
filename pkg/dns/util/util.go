@@ -58,8 +58,8 @@ func ReverseArray(arr []string) []string {
 	return arr
 }
 
-// Returns record in a format that SkyDNS understands.
-// Also return the hash of the record.
+// GetSkyMsg returns record in a format that SkyDNS understands. Also returns
+// the hash of the record.
 func GetSkyMsg(ip string, port int) (*msg.Service, string) {
 	msg := NewServiceRecord(ip, port)
 	hash := HashServiceRecord(msg)
